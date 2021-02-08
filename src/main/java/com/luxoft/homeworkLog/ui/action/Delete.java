@@ -1,23 +1,23 @@
-package com.luxoft.homeworkLog.ui;
+package com.luxoft.homeworkLog.ui.action;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.ApplicationWindow;
 
-public class Exit extends Action {
+public class Delete extends Action {
 
 	ApplicationWindow _applicationWindow;
 
-	public Exit(ApplicationWindow applicationWindow) {
+	public Delete(ApplicationWindow applicationWindow) {
 		_applicationWindow = applicationWindow;
-		setText("Exit");
+		setText("Delete");
 	}
 
 	@Override
 	public void run() {
-		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Exit", "Are you sure?");
+		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Delete", "Delete data?");
 		if (result) {
-			_applicationWindow.close();
+
 		}
 	}
 }

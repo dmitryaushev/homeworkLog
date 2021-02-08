@@ -1,23 +1,23 @@
-package com.luxoft.homeworkLog.ui;
+package com.luxoft.homeworkLog.ui.action;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.ApplicationWindow;
 
-public class Save extends Action {
+public class Exit extends Action {
 
 	ApplicationWindow _applicationWindow;
 
-	public Save(ApplicationWindow applicationWindow) {
+	public Exit(ApplicationWindow applicationWindow) {
 		_applicationWindow = applicationWindow;
-		setText("Save");
+		setText("Exit");
 	}
 
 	@Override
 	public void run() {
-		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Save", "Save data?");
+		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Exit", "Are you sure?");
 		if (result) {
-
+			_applicationWindow.close();
 		}
 	}
 }
