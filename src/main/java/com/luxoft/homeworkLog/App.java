@@ -20,13 +20,17 @@ public class App extends ApplicationWindow{
 	
 	@Override
 	protected Control createContents(Composite parent) {
+		_viewManager.createUI(parent);
 		
-		Shell shell = getShell();
+		parent.pack();
+		return parent;
+	}
+	
+	@Override
+	protected void configureShell(Shell shell) {
+		super.configureShell(shell);
 		shell.setText("JFace homework log");
 		shell.setSize(700, 300);
-
-		//parent.pack();
-		return parent;
 	}
 	
 	@Override
