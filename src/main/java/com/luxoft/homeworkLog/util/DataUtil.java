@@ -1,11 +1,15 @@
 package com.luxoft.homeworkLog.util;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.luxoft.homeworkLog.model.Student;
 
 public class DataUtil {
 
-	public static Student[] createData() {
-		return new Student[] { 
+	public static List<Student> createData() {
+	
+		return Arrays.asList(
 				new Student("sasha", "14", true), 
 				new Student("vanya", "14", false), 
 				new Student("tolya", "1", true), 
@@ -16,6 +20,6 @@ public class DataUtil {
 				new Student("zera", "14", true), 
 				new Student("dima", "14", false), 
 				new Student("kolya", "2", true),
-				new Student("anya", "5", false) };
+				new Student("anya", "5", false));
 	}
 }

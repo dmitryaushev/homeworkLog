@@ -16,7 +16,7 @@ public class StudentListUI {
 
 	public void createStudentListUI(Composite parent) {
 
-		_tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION);
+		_tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		_tableViewer.setContentProvider(ArrayContentProvider.getInstance());
 
 		_nameColumn = createColumnFor(_tableViewer, "Name", 150);
