@@ -11,21 +11,39 @@ public class ButtonUI {
 	private Button _addButton;
 	private Button _saveButton;
 	private Button _deleteButton;
-	private Button _cancelButton;
+	private Button _clearButton;
 
 	public void createButtonUi(Composite parent) {
 
-		_composite = new Composite(parent, SWT.BORDER);
+		_composite = new Composite(parent, SWT.NONE);
 		_composite.setLayout(new FillLayout());
 
 		_addButton = new Button(_composite, SWT.PUSH);
 		_saveButton = new Button(_composite, SWT.PUSH);
 		_deleteButton = new Button(_composite, SWT.PUSH);
-		_cancelButton = new Button(_composite, SWT.PUSH);
+		_clearButton = new Button(_composite, SWT.PUSH);
 
 		_addButton.setText("Add");
 		_saveButton.setText("Save");
 		_deleteButton.setText("Delete");
-		_cancelButton.setText("Clear");
+		_clearButton.setText("Clear");
 	}
+
+	public Button getAddButton() {
+		return _addButton;
+	}
+
+	public Button getSaveButton() {
+		return _saveButton;
+	}
+
+	public Button getDeleteButton() {
+		return _deleteButton;
+	}
+
+	public Button getClearButton() {
+		return _clearButton;
+	}
+	
+	
 }

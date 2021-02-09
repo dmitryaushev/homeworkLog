@@ -8,6 +8,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import com.luxoft.homeworkLog.ui.ViewManager;
+import com.luxoft.homeworkLog.util.LoadUtil;
 
 public class App extends ApplicationWindow{
 	
@@ -21,6 +22,7 @@ public class App extends ApplicationWindow{
 	@Override
 	protected Control createContents(Composite parent) {
 		_viewManager.createUI(parent);
+		LoadUtil.loadList();
 		
 		parent.pack();
 		return parent;

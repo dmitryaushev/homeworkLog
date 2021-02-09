@@ -52,4 +52,18 @@ public class InputUI {
 		_checkButton.setLayoutData(checkGridData);
 		
 	}
+
+	public Text getNameText() {
+		return _nameText;
+	}
+
+	public Text getGroupText() {
+		return _groupText;
+	}
+
+	public Button getCheckButton() {
+		return _checkButton;
+	}
+	
+	
 }

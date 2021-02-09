@@ -8,8 +8,10 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 
 import com.luxoft.homeworkLog.ui.input.ButtonUI;
+import com.luxoft.homeworkLog.ui.input.ButtonUISupport;
 import com.luxoft.homeworkLog.ui.input.InputUI;
 import com.luxoft.homeworkLog.ui.list.StudentListUI;
+import com.luxoft.homeworkLog.ui.list.StudentListUISupport;
 
 public class ViewManager {
 
@@ -17,14 +19,18 @@ public class ViewManager {
 	
 	private MenuUI _menuUI;
 	private StudentListUI _studentListUI;
+	private StudentListUISupport _studentListUISupport;
 	private InputUI _inputUI;
 	private ButtonUI _buttonUI;
+	private ButtonUISupport _buttonUISupport;
 	
 	public ViewManager() {
 		_menuUI = new MenuUI();
 		_studentListUI = new StudentListUI();
+		_studentListUISupport = new StudentListUISupport(_studentListUI);
 		_inputUI = new InputUI();
 		_buttonUI = new ButtonUI();
+		_buttonUISupport = new ButtonUISupport(_inputUI, _buttonUI, _studentListUI);
 	}
 	
 	public void createUI(Composite parent) {
@@ -33,12 +39,13 @@ public class ViewManager {
 		sashForm.setLayout(new FillLayout());
 		
 		_studentListUI.createStudentListUI(sashForm);
+		_studentListUISupport.createStudentListListeners();
 	
 		Composite composite = new Composite(sashForm, SWT.BORDER);
 		composite.setLayout(new FillLayout(SWT.VERTICAL));
 		_inputUI.createInputUI(composite);
 		_buttonUI.createButtonUi(composite);
-		
+		_buttonUISupport.createButtonUISupport();
 	}
 	
 	public MenuManager getMenuManager(ApplicationWindow applicationWindow) {
@@ -50,5 +57,9 @@ public class ViewManager {
 			_viewManager = new ViewManager();
 		}
 		return _viewManager;
+	}
+
+	public StudentListUI getStudentListUI() {
+		return _studentListUI;
 	}
 }
