@@ -61,8 +61,8 @@ public class ButtonUISupport {
 
 			List<Student> students = (List<Student>) _tableViewer.getInput();
 			students.add(student);
-
-			_tableViewer.setInput(students);
+			
+			_tableViewer.refresh();
 		}));
 
 		_saveButton.addSelectionListener(widgetSelectedAdapter(event -> {
@@ -80,13 +80,9 @@ public class ButtonUISupport {
 			List<Student> students = (List<Student>) _tableViewer.getInput();
 			
 			StructuredSelection structuredSelection = (StructuredSelection) _tableViewer.getSelection();
-			structuredSelection.forEach(object -> {
-				Student student = (Student) object;
-				_tableViewer.remove(student);
-				students.remove(student);
-			});
+			structuredSelection.forEach(selectedStudent -> students.remove(selectedStudent));
 			
-			_tableViewer.setInput(students);
+			_tableViewer.refresh();;
 		}));
 
 		_clearButton.addSelectionListener(widgetSelectedAdapter(event -> {

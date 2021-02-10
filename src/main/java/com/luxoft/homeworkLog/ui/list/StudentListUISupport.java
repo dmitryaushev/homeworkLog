@@ -6,7 +6,6 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 
 import com.luxoft.homeworkLog.model.Student;
-import com.luxoft.homeworkLog.util.DataUtil;
 
 public class StudentListUISupport {
 
@@ -33,19 +32,6 @@ public class StudentListUISupport {
 				return ((Student) object).getName();
 			}
 		});
-		_nameColumn.setEditingSupport(new AbstactEditingSupport(_tableViewer) {
-
-			@Override
-			protected Object getValue(Object object) {
-				return ((Student) object).getName();
-			}
-
-			@Override
-			protected void doSetValue(Object object, Object value) {
-				String name = ((Student) object).getName();
-				name = value.toString();
-			}
-		});
 		new ColumnViewerComparator(_tableViewer, _nameColumn) {
 
 			@Override
@@ -60,19 +46,6 @@ public class StudentListUISupport {
 			@Override
 			public String getText(Object object) {
 				return ((Student) object).getGroup();
-			}
-		});
-		_groupColumn.setEditingSupport(new AbstactEditingSupport(_tableViewer) {
-
-			@Override
-			protected Object getValue(Object object) {
-				return ((Student) object).getGroup();
-			}
-
-			@Override
-			protected void doSetValue(Object object, Object value) {
-				String group = ((Student) object).getGroup().toString();
-				group = value.toString();
 			}
 		});
 		new ColumnViewerComparator(_tableViewer, _groupColumn) {
@@ -91,19 +64,6 @@ public class StudentListUISupport {
 				return ((Student) object).isTaskDone().toString();
 			}
 		});
-		_taskColumn.setEditingSupport(new AbstactEditingSupport(_tableViewer) {
-
-			@Override
-			protected Object getValue(Object object) {
-				return ((Student) object).isTaskDone();
-			}
-
-			@Override
-			protected void doSetValue(Object object, Object value) {
-				String isTaskDone = ((Student) object).isTaskDone().toString();
-				isTaskDone = value.toString();
-			}
-		});
 		new ColumnViewerComparator(_tableViewer, _taskColumn) {
 
 			@Override
@@ -113,7 +73,5 @@ public class StudentListUISupport {
 				return Boolean.compare(s1.isTaskDone(), s2.isTaskDone());
 			}
 		};
-
-		//_tableViewer.setInput(DataUtil.createData());
 	}
 }

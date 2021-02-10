@@ -23,6 +23,7 @@ public class App extends ApplicationWindow{
 	protected Control createContents(Composite parent) {
 		_viewManager.createUI(parent);
 		LoadUtil.loadList();
+		//DataUtil.createData();
 		
 		parent.pack();
 		return parent;
