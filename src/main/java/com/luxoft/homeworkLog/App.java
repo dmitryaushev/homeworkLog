@@ -33,7 +33,8 @@ public class App extends ApplicationWindow{
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
 		shell.setText("JFace homework log");
-		shell.setSize(700, 300);
+		shell.setMinimumSize(700, 300);
+	
 	}
 	
 	@Override

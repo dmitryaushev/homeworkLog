@@ -33,7 +33,6 @@ public class StudentListUISupport {
 			}
 		});
 		new ColumnViewerComparator(_tableViewer, _nameColumn) {
-
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -49,7 +48,6 @@ public class StudentListUISupport {
 			}
 		});
 		new ColumnViewerComparator(_tableViewer, _groupColumn) {
-
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -58,14 +56,13 @@ public class StudentListUISupport {
 			}
 		};
 		
-		_taskColumn.setLabelProvider(new ColumnLabelProvider() {
+		_taskColumn.setLabelProvider(new EmulatedNativeCheckBoxLabelProvider(_tableViewer) {		
 			@Override
-			public String getText(Object object) {
-				return ((Student) object).isTaskDone().toString();
+			protected boolean isChecked(Object object) {
+				return ((Student) object).isTaskDone();
 			}
 		});
 		new ColumnViewerComparator(_tableViewer, _taskColumn) {
-
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;

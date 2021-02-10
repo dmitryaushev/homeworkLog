@@ -5,6 +5,7 @@ import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
 import com.luxoft.homeworkLog.ui.input.ButtonUI;
@@ -42,7 +43,7 @@ public class ViewManager {
 		_studentListUISupport.createStudentListListeners();
 	
 		Composite composite = new Composite(sashForm, SWT.BORDER);
-		composite.setLayout(new FillLayout(SWT.VERTICAL));
+		composite.setLayout(new GridLayout());
 		_inputUI.createInputUI(composite);
 		_buttonUI.createButtonUi(composite);
 		_buttonUISupport.createButtonUISupport();
