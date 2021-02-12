@@ -13,8 +13,12 @@ public class StudentListUI {
 	private TableViewerColumn _nameColumn;
 	private TableViewerColumn _groupColumn;
 	private TableViewerColumn _taskColumn;
+	
+	public StudentListUI(Composite parent) {
+		createStudentListUI(parent);
+	}
 
-	public void createStudentListUI(Composite parent) {
+	private void createStudentListUI(Composite parent) {
 
 		_tableViewer = new TableViewer(parent, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		_tableViewer.setContentProvider(ArrayContentProvider.getInstance());
@@ -51,5 +55,4 @@ public class StudentListUI {
 	public TableViewerColumn getTaskColumn() {
 		return _taskColumn;
 	}
-
 }

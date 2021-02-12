@@ -18,9 +18,10 @@ public class StudentListUISupport {
 
 	public StudentListUISupport(StudentListUI studentListUI) {
 		_studentListUI = studentListUI;
+		createStudentListListeners();
 	}
 
-	public void createStudentListListeners() {
+	private void createStudentListListeners() {
 		_tableViewer = _studentListUI.getTableViewer();
 		_nameColumn = _studentListUI.getNameColumn();
 		_groupColumn = _studentListUI.getGroupColumn();

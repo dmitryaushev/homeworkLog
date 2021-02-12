@@ -13,8 +13,12 @@ public class ButtonUI {
 	private Button _saveButton;
 	private Button _deleteButton;
 	private Button _clearButton;
+	
+	public ButtonUI(Composite parent) {
+		createButtonUi(parent);
+	}
 
-	public void createButtonUi(Composite parent) {
+	private void createButtonUi(Composite parent) {
 
 		RowLayout layout = new RowLayout(SWT.HORIZONTAL);
 		layout.marginTop = 25;
@@ -54,6 +58,4 @@ public class ButtonUI {
 	public Button getClearButton() {
 		return _clearButton;
 	}
-	
-	
 }

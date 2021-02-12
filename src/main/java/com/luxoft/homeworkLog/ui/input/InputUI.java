@@ -18,7 +18,11 @@ public class InputUI {
 	private Text _groupText;
 	private Button _checkButton;
 
-	public void createInputUI(Composite parent) {
+	public InputUI(Composite parent) {
+		createInputUI(parent);
+	}
+
+	private void createInputUI(Composite parent) {
 
 		_composite = new Composite(parent, SWT.NONE);
 
@@ -30,17 +34,17 @@ public class InputUI {
 		_checkButton = new Button(_composite, SWT.CHECK);
 
 		_composite.setLayout(new GridLayout(2, false));
-		
+
 		GridData labelGridData = new GridData();
 		GridData textGridData = new GridData(GridData.FILL, GridData.CENTER, false, false);
-		GridData checkGridData = new GridData();	
-		
+		GridData checkGridData = new GridData();
+
 		labelGridData.verticalIndent = 15;
 		textGridData.horizontalIndent = -5;
 		textGridData.verticalIndent = 15;
 		checkGridData.horizontalIndent = 170;
 		checkGridData.verticalIndent = 15;
-	
+
 		_nameLabel.setText("Name");
 		_nameLabel.setLayoutData(labelGridData);
 		_nameText.setLayoutData(textGridData);
@@ -50,7 +54,6 @@ public class InputUI {
 		_taskLabel.setText("SWT task done");
 		_taskLabel.setLayoutData(labelGridData);
 		_checkButton.setLayoutData(checkGridData);
-		
 	}
 
 	public Text getNameText() {
@@ -64,6 +67,4 @@ public class InputUI {
 	public Button getCheckButton() {
 		return _checkButton;
 	}
-	
-	
 }

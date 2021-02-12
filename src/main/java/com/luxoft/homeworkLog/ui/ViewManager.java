@@ -8,6 +8,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
+import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.ui.input.ButtonUI;
 import com.luxoft.homeworkLog.ui.input.ButtonUISupport;
 import com.luxoft.homeworkLog.ui.input.InputUI;
@@ -27,14 +28,10 @@ public class ViewManager {
 	private ButtonUI _buttonUI;
 	private ButtonUISupport _buttonUISupport;
 	
+	private ModelManager _modelManager;
+	
 	public ViewManager() {
 		_menuUI = new MenuUI();
-		_studentListUI = new StudentListUI();
-		_studentListUISupport = new StudentListUISupport(_studentListUI);
-		_inputUI = new InputUI();
-		_inputUISupport = new InputUISupport(_inputUI);
-		_buttonUI = new ButtonUI();
-		_buttonUISupport = new ButtonUISupport(_inputUI, _buttonUI, _studentListUI);
 	}
 	
 	public void createUI(Composite parent) {
@@ -42,16 +39,19 @@ public class ViewManager {
 		SashForm sashForm = new SashForm(parent, SWT.NONE);
 		sashForm.setLayout(new FillLayout());
 		
-		_studentListUI.createStudentListUI(sashForm);
-		_studentListUISupport.createStudentListListeners();
-	
+		_studentListUI = new StudentListUI(sashForm);
+		_studentListUISupport = new StudentListUISupport(_studentListUI);
+		
 		Composite composite = new Composite(sashForm, SWT.BORDER);
 		composite.setLayout(new GridLayout());
 		
-		_inputUI.createInputUI(composite);
-		_inputUISupport.createInputUIListeners();
-		_buttonUI.createButtonUi(composite);
-		_buttonUISupport.createButtonUISupport();		
+		_inputUI = new InputUI(composite);
+		_inputUISupport = new InputUISupport(_inputUI);
+		_buttonUI = new ButtonUI(composite);	
+		_buttonUISupport = new ButtonUISupport(_inputUI, _buttonUI, _studentListUI);
+				
+		_modelManager = ModelManager.getInstance();
+		_modelManager.createModel();
 	}
 	
 	public MenuManager getMenuManager(ApplicationWindow applicationWindow) {

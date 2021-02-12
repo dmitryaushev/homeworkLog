@@ -11,9 +11,10 @@ public class InputUISupport {
 	
 	public InputUISupport(InputUI inputUI) {
 		_inputUI = inputUI;
+		createInputUIListeners();
 	}
 
-	public void createInputUIListeners() {
+	private void createInputUIListeners() {
 		
 		_nameText = _inputUI.getNameText();
 		_groupText = _inputUI.getGroupText();
