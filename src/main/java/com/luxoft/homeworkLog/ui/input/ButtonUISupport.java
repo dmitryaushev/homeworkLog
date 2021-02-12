@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.widgets.Button;
@@ -17,6 +18,7 @@ import org.eclipse.swt.widgets.Text;
 import com.google.gson.Gson;
 import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.model.Student;
+import com.luxoft.homeworkLog.service.ValidationService;
 import com.luxoft.homeworkLog.ui.ViewManager;
 import com.luxoft.homeworkLog.ui.list.StudentListUI;
 
@@ -63,9 +65,15 @@ public class ButtonUISupport {
 			String group = _groupText.getText();
 			boolean isTaskDone = _checkButton.getSelection();
 			
-			Student student = new Student(name, group, isTaskDone);
-			_modelManager.addStudent(student);
-			_tableViewer.refresh();			
+			try {
+				ValidationService.validateInput(name, group);
+				
+				Student student = new Student(name, group, isTaskDone);
+				_modelManager.addStudent(student);
+				_tableViewer.refresh();							
+			} catch (Exception e) {
+				MessageDialog.openError(_tableViewer.getControl().getShell(), "Invalid input", e.getMessage());
+			}		
 		}));
 
 		_saveButton.addSelectionListener(widgetSelectedAdapter(event -> {
