@@ -91,6 +91,11 @@ public class ButtonUISupport {
 				students.add(student);
 				});
 			
+			if (students.size() == 0) {
+				MessageDialog.openError(_tableViewer.getControl().getShell(), "Invalid", "No student select");
+				return;
+			}
+			
 			_modelManager.deleteStudents(students);
 			_tableViewer.refresh();
 		}));

@@ -27,30 +27,35 @@ public class Delete extends Action {
 
 	@Override
 	public void run() {
-		
+
 		TableViewer tableViewer = _viewManager.getStudentListUI().getTableViewer();
 		List<Student> students = new ArrayList<>();
-		
+
 		StructuredSelection structuredSelection = (StructuredSelection) tableViewer.getSelection();
 		structuredSelection.forEach(selectedStudent -> {
 			Student student = (Student) selectedStudent;
 			students.add(student);
 		});
-		
-		String message;
+
 		if (students.size() == 0) {
 			MessageDialog.openError(_applicationWindow.getShell(), "Invalid", "No student select");
 			return;
 		}
+
+		String message = "";
 		if (students.size() == 1) {
 			message = String.format("Delete student %s?", students.get(0).getName());
 		} else {
-			StringBuilder studentsName = new StringBuilder();
-			students.forEach(student -> studentsName.append(student.getName()).append(", "));
-			studentsName.delete(studentsName.length() - 2, studentsName.length());
-			message = String.format("Delete students: %s?", studentsName.toString());
+			message += "Delete students: ";
+			for (int i = 0; i < students.size(); i++) {
+				if (i != students.size() - 1) {
+					message += students.get(i).getName() + ", ";				
+				} else {
+					message += students.get(i).getName() + "?";
+				}
+			}
 		}
-		
+
 		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Delete", message);
 		if (result) {
 			_modelManager.deleteStudents(students);
