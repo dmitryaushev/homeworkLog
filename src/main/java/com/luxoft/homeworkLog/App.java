@@ -9,8 +9,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 
+import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.ui.ViewManager;
-import com.luxoft.homeworkLog.util.LoadUtil;
+import com.luxoft.homeworkLog.util.FileManager;
 
 public class App extends ApplicationWindow {
 
@@ -24,8 +25,6 @@ public class App extends ApplicationWindow {
 	@Override
 	protected Control createContents(Composite parent) {
 		_viewManager.createUI(parent);
-		LoadUtil.loadList();
-		//DataUtil.createData();
 
 		parent.pack();
 		return parent;
@@ -50,7 +49,7 @@ public class App extends ApplicationWindow {
 		return _viewManager.getMenuManager(this);
 	}
 
-	public static void main(String[] args) {
+	public static void main() {
 		App awin = new App();
 		awin.setBlockOnOpen(true);
 		awin.open();
