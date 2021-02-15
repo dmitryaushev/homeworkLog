@@ -28,7 +28,7 @@ public class ButtonUISupport {
 	}
 
 	private void createButtonUIListeners() {
-		
+
 		ModelManager modelManager = ModelManager.getInstance();
 		TableViewer tableViewer = ViewManager.getInstance().getStudentListUI().getTableViewer();
 
@@ -42,19 +42,19 @@ public class ButtonUISupport {
 		Button checkButton = _inputUI.getCheckButton();
 
 		addButton.addSelectionListener(widgetSelectedAdapter(event -> {
-			String name = nameText.getText();
-			String group = groupText.getText();
+			String name = nameText.getText().trim();
+			String group = groupText.getText().trim();
 			boolean isTaskDone = checkButton.getSelection();
-			
+
 			try {
 				ValidationService.validateInput(name, group);
-				
+
 				Student student = new Student(name, group, isTaskDone);
 				modelManager.addStudent(student);
-				tableViewer.refresh();							
+				tableViewer.refresh();
 			} catch (Exception e) {
 				MessageDialog.openError(tableViewer.getControl().getShell(), "Invalid input", e.getMessage());
-			}		
+			}
 		}));
 
 		saveButton.addSelectionListener(widgetSelectedAdapter(event -> {
@@ -64,20 +64,37 @@ public class ButtonUISupport {
 
 		deleteButton.addSelectionListener(widgetSelectedAdapter(event -> {
 			List<Student> students = new ArrayList<>();
-			
+
 			StructuredSelection structuredSelection = (StructuredSelection) tableViewer.getSelection();
 			structuredSelection.forEach(selectedStudent -> {
 				Student student = (Student) selectedStudent;
 				students.add(student);
-				});
-			
+			});
+
 			if (students.size() == 0) {
 				MessageDialog.openError(tableViewer.getControl().getShell(), "Invalid", "No student select");
 				return;
 			}
-			
-			modelManager.deleteStudents(students);
-			tableViewer.refresh();
+
+			String message = "";
+			if (students.size() == 1) {
+				message = String.format("Delete student %s?", students.get(0).getName());
+			} else {
+				message += "Delete students: ";
+				for (int i = 0; i < students.size(); i++) {
+					if (i != students.size() - 1) {
+						message += students.get(i).getName() + ", ";
+					} else {
+						message += students.get(i).getName() + "?";
+					}
+				}
+			}
+
+			boolean result = MessageDialog.openQuestion(tableViewer.getControl().getShell(), "Delete", message);
+			if (result) {
+				modelManager.deleteStudents(students);
+				tableViewer.refresh();
+			}
 		}));
 
 		clearButton.addSelectionListener(widgetSelectedAdapter(event -> {

@@ -16,17 +16,17 @@ public class StudentListUISupport {
 
 	private StudentListUI _studentListUI;
 
-	private TableViewer tableViewer;
+	private TableViewer _tableViewer;
 
 	public StudentListUISupport(StudentListUI studentListUI) {
 		_studentListUI = studentListUI;
+		_tableViewer = _studentListUI.getTableViewer();
 		setColumnLogic();
 		setListStudentsToTableViewer();
 	}
 
 	private void setColumnLogic() {
 		
-		TableViewer tableViewer = _studentListUI.getTableViewer();
 		TableViewerColumn nameColumn = _studentListUI.getNameColumn();
 		TableViewerColumn groupColumn = _studentListUI.getGroupColumn();
 		TableViewerColumn taskColumn = _studentListUI.getTaskColumn();
@@ -37,7 +37,7 @@ public class StudentListUISupport {
 				return ((Student) object).getName();
 			}
 		});
-		new ColumnViewerComparator(tableViewer, nameColumn) {
+		new ColumnViewerComparator(_tableViewer, nameColumn) {
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -52,7 +52,7 @@ public class StudentListUISupport {
 				return ((Student) object).getGroup();
 			}
 		});
-		new ColumnViewerComparator(tableViewer, groupColumn) {
+		new ColumnViewerComparator(_tableViewer, groupColumn) {
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -61,13 +61,13 @@ public class StudentListUISupport {
 			}
 		};
 		
-		taskColumn.setLabelProvider(new EmulatedNativeCheckBoxLabelProvider(tableViewer) {		
+		taskColumn.setLabelProvider(new EmulatedNativeCheckBoxLabelProvider(_tableViewer) {		
 			@Override
 			protected boolean isChecked(Object object) {
 				return ((Student) object).isTaskDone();
 			}
 		});
-		new ColumnViewerComparator(tableViewer, taskColumn) {
+		new ColumnViewerComparator(_tableViewer, taskColumn) {
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -79,6 +79,6 @@ public class StudentListUISupport {
 	
 	private void setListStudentsToTableViewer() {
 		List<Student> input = ModelManager.getInstance().getStateModel().getStudents();
-		tableViewer.setInput(input);		
+		_tableViewer.setInput(input);		
 	}
 }
