@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.action;
+package com.luxoft.homeworkLog.action;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;

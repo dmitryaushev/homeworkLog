@@ -8,13 +8,6 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.luxoft.homeworkLog.ui.input.ButtonUI;
-import com.luxoft.homeworkLog.ui.input.ButtonUISupport;
-import com.luxoft.homeworkLog.ui.input.InputUI;
-import com.luxoft.homeworkLog.ui.input.InputUISupport;
-import com.luxoft.homeworkLog.ui.list.StudentListUI;
-import com.luxoft.homeworkLog.ui.list.StudentListUISupport;
-
 public class ViewManager {
 
 	private static ViewManager _viewManager;

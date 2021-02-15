@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.list;
+package com.luxoft.homeworkLog.ui;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import org.eclipse.jface.viewers.Viewer;
 
 import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.model.Student;
+import com.luxoft.homeworkLog.ui.tableviewer.ColumnViewerComparator;
+import com.luxoft.homeworkLog.ui.tableviewer.EmulatedNativeCheckBoxLabelProvider;
 
 public class StudentListUISupport {
 

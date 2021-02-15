@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.input;
+package com.luxoft.homeworkLog.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;

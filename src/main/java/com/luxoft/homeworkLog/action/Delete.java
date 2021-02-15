@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.action;
+package com.luxoft.homeworkLog.action;
 
 import java.util.ArrayList;
 import java.util.List;

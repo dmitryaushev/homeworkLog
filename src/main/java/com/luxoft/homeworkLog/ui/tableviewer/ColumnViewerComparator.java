@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.list;
+package com.luxoft.homeworkLog.ui.tableviewer;
 
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;

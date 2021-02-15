@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.action;
+package com.luxoft.homeworkLog.action;
 
 import java.io.File;
 import java.io.IOException;

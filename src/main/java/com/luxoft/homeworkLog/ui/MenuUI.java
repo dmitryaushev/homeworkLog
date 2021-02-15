@@ -3,10 +3,10 @@ package com.luxoft.homeworkLog.ui;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.window.ApplicationWindow;
 
-import com.luxoft.homeworkLog.ui.action.About;
-import com.luxoft.homeworkLog.ui.action.Delete;
-import com.luxoft.homeworkLog.ui.action.Exit;
-import com.luxoft.homeworkLog.ui.action.Save;
+import com.luxoft.homeworkLog.action.About;
+import com.luxoft.homeworkLog.action.Delete;
+import com.luxoft.homeworkLog.action.Exit;
+import com.luxoft.homeworkLog.action.Save;
 
 public class MenuUI {
 

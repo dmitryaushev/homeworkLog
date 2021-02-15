@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.list;
+package com.luxoft.homeworkLog.ui.tableviewer;
 
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.util.Util;

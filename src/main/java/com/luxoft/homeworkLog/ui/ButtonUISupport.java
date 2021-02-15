@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.input;
+package com.luxoft.homeworkLog.ui;
 
 import static org.eclipse.swt.events.SelectionListener.widgetSelectedAdapter;
 
@@ -19,8 +19,6 @@ import com.google.gson.Gson;
 import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.model.Student;
 import com.luxoft.homeworkLog.service.ValidationService;
-import com.luxoft.homeworkLog.ui.ViewManager;
-import com.luxoft.homeworkLog.ui.list.StudentListUI;
 import com.luxoft.homeworkLog.util.FileManager;
 
 public class ButtonUISupport {

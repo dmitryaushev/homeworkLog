@@ -1,4 +1,4 @@
-package com.luxoft.homeworkLog.ui.list;
+package com.luxoft.homeworkLog.ui;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.TableViewer;
