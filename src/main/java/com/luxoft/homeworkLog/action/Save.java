@@ -1,16 +1,11 @@
 package com.luxoft.homeworkLog.action;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.ApplicationWindow;
 
-import com.google.gson.Gson;
 import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.model.Student;
 import com.luxoft.homeworkLog.util.FileManager;

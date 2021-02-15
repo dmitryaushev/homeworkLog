@@ -16,30 +16,28 @@ public class StudentListUISupport {
 
 	private StudentListUI _studentListUI;
 
-	private TableViewer _tableViewer;
-	private TableViewerColumn _nameColumn;
-	private TableViewerColumn _groupColumn;
-	private TableViewerColumn _taskColumn;
+	private TableViewer tableViewer;
 
 	public StudentListUISupport(StudentListUI studentListUI) {
 		_studentListUI = studentListUI;
-		createStudentListListeners();
+		setColumnLogic();
 		setListStudentsToTableViewer();
 	}
 
-	private void createStudentListListeners() {
-		_tableViewer = _studentListUI.getTableViewer();
-		_nameColumn = _studentListUI.getNameColumn();
-		_groupColumn = _studentListUI.getGroupColumn();
-		_taskColumn = _studentListUI.getTaskColumn();
+	private void setColumnLogic() {
+		
+		TableViewer tableViewer = _studentListUI.getTableViewer();
+		TableViewerColumn nameColumn = _studentListUI.getNameColumn();
+		TableViewerColumn groupColumn = _studentListUI.getGroupColumn();
+		TableViewerColumn taskColumn = _studentListUI.getTaskColumn();
 
-		_nameColumn.setLabelProvider(new ColumnLabelProvider() {
+		nameColumn.setLabelProvider(new ColumnLabelProvider() {
 			@Override
 			public String getText(Object object) {
 				return ((Student) object).getName();
 			}
 		});
-		new ColumnViewerComparator(_tableViewer, _nameColumn) {
+		new ColumnViewerComparator(tableViewer, nameColumn) {
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -48,13 +46,13 @@ public class StudentListUISupport {
 			}
 		};
 
-		_groupColumn.setLabelProvider(new ColumnLabelProvider() {
+		groupColumn.setLabelProvider(new ColumnLabelProvider() {
 			@Override
 			public String getText(Object object) {
 				return ((Student) object).getGroup();
 			}
 		});
-		new ColumnViewerComparator(_tableViewer, _groupColumn) {
+		new ColumnViewerComparator(tableViewer, groupColumn) {
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -63,13 +61,13 @@ public class StudentListUISupport {
 			}
 		};
 		
-		_taskColumn.setLabelProvider(new EmulatedNativeCheckBoxLabelProvider(_tableViewer) {		
+		taskColumn.setLabelProvider(new EmulatedNativeCheckBoxLabelProvider(tableViewer) {		
 			@Override
 			protected boolean isChecked(Object object) {
 				return ((Student) object).isTaskDone();
 			}
 		});
-		new ColumnViewerComparator(_tableViewer, _taskColumn) {
+		new ColumnViewerComparator(tableViewer, taskColumn) {
 			@Override
 			protected int doCompare(Viewer viewer, Object o1, Object o2) {
 				Student s1 = (Student) o1;
@@ -81,6 +79,6 @@ public class StudentListUISupport {
 	
 	private void setListStudentsToTableViewer() {
 		List<Student> input = ModelManager.getInstance().getStateModel().getStudents();
-		_tableViewer.setInput(input);		
+		tableViewer.setInput(input);		
 	}
 }
