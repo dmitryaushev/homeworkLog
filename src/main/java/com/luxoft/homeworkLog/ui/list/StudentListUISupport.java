@@ -1,10 +1,13 @@
 package com.luxoft.homeworkLog.ui.list;
 
+import java.util.List;
+
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 
+import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.model.Student;
 
 public class StudentListUISupport {
@@ -19,6 +22,7 @@ public class StudentListUISupport {
 	public StudentListUISupport(StudentListUI studentListUI) {
 		_studentListUI = studentListUI;
 		createStudentListListeners();
+		setListStudentsToTableViewer();
 	}
 
 	private void createStudentListListeners() {
@@ -70,6 +74,11 @@ public class StudentListUISupport {
 				Student s2 = (Student) o2;
 				return Boolean.compare(s1.isTaskDone(), s2.isTaskDone());
 			}
-		};
+		};		
+	}
+	
+	private void setListStudentsToTableViewer() {
+		List<Student> input = ModelManager.getInstance().getStateModel().getStudents();
+		_tableViewer.setInput(input);		
 	}
 }

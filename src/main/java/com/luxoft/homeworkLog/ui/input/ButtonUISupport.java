@@ -21,6 +21,7 @@ import com.luxoft.homeworkLog.model.Student;
 import com.luxoft.homeworkLog.service.ValidationService;
 import com.luxoft.homeworkLog.ui.ViewManager;
 import com.luxoft.homeworkLog.ui.list.StudentListUI;
+import com.luxoft.homeworkLog.util.FileManager;
 
 public class ButtonUISupport {
 
@@ -78,13 +79,7 @@ public class ButtonUISupport {
 
 		_saveButton.addSelectionListener(widgetSelectedAdapter(event -> {
 			List<Student> students = _modelManager.getStateModel().getStudents();
-			String json = new Gson().toJson(students);
-			String path = String.format("%s%sfile.txt", System.getProperty("user.dir"), File.separator);
-			try {
-				Files.write(Paths.get(path), json.getBytes());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			FileManager.writeListToFile(students);
 		}));
 
 		_deleteButton.addSelectionListener(widgetSelectedAdapter(event -> {

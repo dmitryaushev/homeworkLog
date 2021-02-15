@@ -2,15 +2,13 @@ package com.luxoft.homeworkLog.model;
 
 import java.util.List;
 
+import com.luxoft.homeworkLog.util.FileManager;
+
 public class ModelManager {
 
 	private static ModelManager _modelManager;
 	
 	private StateModel _stateModel;
-	
-	public void createModel() {
-		_stateModel = new StateModel();
-	}
 	
 	public static ModelManager getInstance() {
 		if (_modelManager == null) {
@@ -20,6 +18,10 @@ public class ModelManager {
 	}
 	
 	public StateModel getStateModel() {
+		if (_stateModel == null) {
+			_stateModel = new StateModel();
+			initModel();
+		}
 		return _stateModel;
 	}
 
@@ -29,5 +31,10 @@ public class ModelManager {
 	
 	public void deleteStudents(List<Student> deletedStudents) {
 		_stateModel.deleteStudents(deletedStudents);
+	}
+	
+	private void initModel() {
+		List<Student> students = FileManager.readListFromFile();
+		_stateModel.setStudents(students);
 	}
 }

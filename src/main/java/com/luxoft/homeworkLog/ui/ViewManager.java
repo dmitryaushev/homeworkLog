@@ -8,7 +8,6 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.ui.input.ButtonUI;
 import com.luxoft.homeworkLog.ui.input.ButtonUISupport;
 import com.luxoft.homeworkLog.ui.input.InputUI;
@@ -27,8 +26,6 @@ public class ViewManager {
 	private InputUISupport _inputUISupport;
 	private ButtonUI _buttonUI;
 	private ButtonUISupport _buttonUISupport;
-	
-	private ModelManager _modelManager;
 	
 	public ViewManager() {
 		_menuUI = new MenuUI();
@@ -49,9 +46,6 @@ public class ViewManager {
 		_inputUISupport = new InputUISupport(_inputUI);
 		_buttonUI = new ButtonUI(composite);	
 		_buttonUISupport = new ButtonUISupport(_inputUI, _buttonUI, _studentListUI);
-				
-		_modelManager = ModelManager.getInstance();
-		_modelManager.createModel();
 	}
 	
 	public MenuManager getMenuManager(ApplicationWindow applicationWindow) {

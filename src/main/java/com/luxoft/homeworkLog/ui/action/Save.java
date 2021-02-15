@@ -13,6 +13,7 @@ import org.eclipse.jface.window.ApplicationWindow;
 import com.google.gson.Gson;
 import com.luxoft.homeworkLog.model.ModelManager;
 import com.luxoft.homeworkLog.model.Student;
+import com.luxoft.homeworkLog.util.FileManager;
 
 public class Save extends Action {
 
@@ -30,13 +31,7 @@ public class Save extends Action {
 		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Save", "Save data?");
 		if (result) {
 			List<Student> students = _modelManager.getStateModel().getStudents();
-			String json = new Gson().toJson(students);
-			String path = String.format("%s%sfile.txt", System.getProperty("user.dir"), File.separator);
-			try {
-				Files.write(Paths.get(path), json.getBytes());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			FileManager.writeListToFile(students);
 		}
 	}
 }
