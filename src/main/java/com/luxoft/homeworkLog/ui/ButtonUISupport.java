@@ -4,6 +4,7 @@ import static org.eclipse.swt.events.SelectionListener.widgetSelectedAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -76,19 +77,7 @@ public class ButtonUISupport {
 				return;
 			}
 
-			String message = "";
-			if (students.size() == 1) {
-				message = String.format("Delete student %s?", students.get(0).getName());
-			} else {
-				message += "Delete students: ";
-				for (int i = 0; i < students.size(); i++) {
-					if (i != students.size() - 1) {
-						message += students.get(i).getName() + ", ";
-					} else {
-						message += students.get(i).getName() + "?";
-					}
-				}
-			}
+			String message = String.format("Delete students: %s?", students.toString().replace("[", "").replace("]", ""));
 
 			boolean result = MessageDialog.openQuestion(tableViewer.getControl().getShell(), "Delete", message);
 			if (result) {

@@ -29,4 +29,10 @@ public class Student {
 	public void setTaskDone(Boolean isTaskDone) {
 		this.isTaskDone = isTaskDone;
 	}
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	
 }

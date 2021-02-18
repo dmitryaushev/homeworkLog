@@ -42,19 +42,7 @@ public class Delete extends Action {
 			return;
 		}
 
-		String message = "";
-		if (students.size() == 1) {
-			message = String.format("Delete student %s?", students.get(0).getName());
-		} else {
-			message += "Delete students: ";
-			for (int i = 0; i < students.size(); i++) {
-				if (i != students.size() - 1) {
-					message += students.get(i).getName() + ", ";				
-				} else {
-					message += students.get(i).getName() + "?";
-				}
-			}
-		}
+		String message = String.format("Delete students: %s?", students.toString().replace("[", "").replace("]", ""));
 
 		boolean result = MessageDialog.openQuestion(_applicationWindow.getShell(), "Delete", message);
 		if (result) {
